@@ -10,6 +10,7 @@ Some notes and scripts for working with Arasaac and wordnet
   * CC-BY-SA-NC
   * ![tree](https://static.arasaac.org/pictograms/3057/3057_300.png) ![tree](https://static.arasaac.org/pictograms/2256/2256_300.png)
   * has links to wordnet for many words
+  * Not all languages have translation, very few for da, lv, el, none for uk, sv, sq (as of 2024-12-18)
   
 
 ### Sclera
