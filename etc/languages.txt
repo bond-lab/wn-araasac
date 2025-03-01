@@ -1,0 +1,37 @@
+an|an|Aragonese|Aragonés
+ar|ar|Arabic|العربية
+bg|bg|Bulgarian|Български
+br|pt-BR|Brazilian Portuguese|Português do Brasil
+ca|ca|Catalan|Català
+cs|cs|Czech|Čeština
+da|da|Danish|Dansk
+de|de|German|Deutsch
+el|el|Greek|Ελληνικά
+en|en|English|English
+es|es|Spanish|Español
+et|et|Estonian|Eesti
+eu|eu|Basque|Euskara
+fa|fa|Persian|فارسی
+fr|fr|French|Français
+gl|gl|Galician|Galego
+he|he|Hebrew|עברית
+hr|hr|Croatian|Hrvatski
+hu|hu|Hungarian|Magyar
+it|it|Italian|Italiano
+ko|ko|Korean|한국어
+lt|lt|Lithuanian|Lietuvių
+lv|lv|Latvian|Latviešu
+mk|mk|Macedonian|Македонски
+nb|nb|Norwegian Bokmål|Norsk Bokmål
+nl|nl|Dutch|Nederlands
+pl|pl|Polish|Polski
+pt|pt|Portuguese|Português
+ro|ro|Romanian|Română
+ru|ru|Russian|Русский
+sk|sk|Slovak|Slovenčina
+sq|sq|Albanian|Shqip
+sv|sv|Swedish|Svenska
+sr|sr|Serbian|Српски
+val|ca-valencia|Valencian|Valencià
+uk|uk|Ukrainian|Українська
+zh|zh|Chinese|中文
