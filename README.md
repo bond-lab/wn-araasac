@@ -1,6 +1,12 @@
 # wn-araasac
 Some notes and scripts for working with Arasaac and wordnet
 
+
+
+
+
+
+
 ## Summary of image sets
 
 ### Araasac (Aragonese Center of Augmentative and Alternative Communication)
@@ -24,9 +30,8 @@ Some notes and scripts for working with Arasaac and wordnet
 
 ## Papers
 
- * [Transparency and translucency indices for 1,525 pictograms from the Aragonese Portal of Augmentative and Alternative Communication](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1467796/full)
-
- Front. Psychol., 14 October 2024
+ * [Transparency and translucency indices for 1,525 pictograms from the Aragonese Portal of Augmentative and Alternative Communication](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1467796/full)  
+Front. Psychol., 14 October 2024 
 Sec. Psychology of Language
 Volume 15 - 2024 | https://doi.org/10.3389/fpsyg.2024.1467796
 

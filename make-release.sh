@@ -2,8 +2,8 @@
 ### Make a new release of the araasac wordnets
 ###
 
-LANGUAGES="an ar bg br ca cs da de el en es et eu fa fr gl he hr hu it ko lt lv mk nb nl pl pt ro ru sk sq sv sr val uk zh"
-export LANGUAGES
+
+
 
 ### setup python
 if [ -d ".venv" ]
@@ -17,19 +17,44 @@ else
     pip install -r requirements.txt
 fi
 
-TMPDIR="etc/"
-VERSION='2025.03.01'
-CILIDIR="${TMPDIR}/cili"
-BLDDIR="build/ara-wn-${VERSION}"
-export VERSION
-export BLDDIR
 
-mkdir -p ${BLDDIR}/json
-mkdir -p ${BLDDIR}/tab
+LANGFILE="etc/languages.txt"
+TMPDIR="etc/"
+WNBASE="arawn"
+VERSION='2025'
+CILIDIR="${TMPDIR}/cili"
+PREDIR="prep/${WNBASE}-${VERSION}"
+BLDDIR="build/${WNBASE}-${VERSION}"
+export WNBASE VERSION PREDIR BLDDIR LANGFILE
+
+mkdir -p ${PREDIR}/json
+mkdir -p ${PREDIR}/tab
 
 #bash scripts/download.sh
-python scripts/ara2tab.py ${BLDDIR}/json ${BLDDIR}/tab "$LANGUAGES"
 
-bash scripts/build.sh
+LANG_CODES=''
+while IFS='|' read -r arasaac _; do
+    # Skip empty lines
+    if [[ -z "$arasaac" ]]; then
+        continue
+    fi
+    LANG_CODES="$LANG_CODES $arasaac"
+done < "$LANGFILE"
 
-#bash scripts/package.sh
+
+#python scripts/ara2tab.py ${PREDIR}/json ${PREDIR}/tab ${WNBASE} "$LANG_CODES"
+
+bash scripts/build-lmf.sh
+
+etc/omw-data/validate.sh
+
+
+BASEURL="https://github.com/omwn/arawn/releases/download/${TAG}"
+export BASEURL
+
+bash etc/omw-data/package.sh $VERSION v$VERSION
+
+
+python etc/omw-data/scripts/summarize-release.py \
+       --core-ili etc/omw-data/etc/wn-core-ili.tab \
+       release/${WNBASE}-${VERSION}.tar.xz > docs/${WNBASE}-${VERSION}-summary.md

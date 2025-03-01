@@ -20,7 +20,7 @@
       <!-- Update the license attribute -->
       <xsl:attribute name="license">https://creativecommons.org/licenses/by-nc-sa/4.0/</xsl:attribute>
       <!-- Add the dc:description attribute -->
-      <xsl:attribute name="dc:description">Wordnet made from the pictographic symbols and accompanying data created by ARASAAC (https://www.arasaac.org) owned by the Government of Aragón</xsl:attribute>
+      <xsl:attribute name="dc:description">Wordnet made from the pictographic symbols and accompanying data created by ARASAAC (https://www.arasaac.org) owned by the Government of Aragón\nFor details about the conversion to wordnet, see https://github.com/omwn/arawn  </xsl:attribute>
       <!-- Copy existing attributes and child nodes -->
       <xsl:apply-templates select="@*[not(name()='license')] | node()"/>
     </xsl:copy>

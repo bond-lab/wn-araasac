@@ -1,4 +1,4 @@
-JSONDIR=build/json
+JSONDIR=${PREDIR}/json
 
 pushd ${JSONDIR}
 

@@ -1,5 +1,10 @@
-etc/
+etc/*.dtd
+etc/cili
+etc/omw-data
 *~
+
+prep/
+release/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

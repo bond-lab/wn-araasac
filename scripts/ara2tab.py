@@ -19,11 +19,11 @@ def wn31to30(synset):
         return None
 
 
-def ara2wn(lang, input_dir, output_dir):
+def ara2wn(lang, wnbase, input_dir, output_dir):
     """Convert ARASAAC JSON to OMW 1.0 format"""
     
     input_file = os.path.join(input_dir, f'{lang}.json')
-    output_file = os.path.join(output_dir, f'{lang}-ara-wn.tab')
+    output_file = os.path.join(output_dir, f'{lang}-{wnbase}.tab')
 
     if not os.path.exists(input_file):
         print(f"Warning: JSON file for '{lang}' not found in {input_dir}. Skipping.")
@@ -63,14 +63,15 @@ def ara2wn(lang, input_dir, output_dir):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python ara2tab.py <input_dir> <output_dir> '<lang1 lang2 lang3 ...>'")
+    if len(sys.argv) != 5:
+        print("Usage: python ara2tab.py <input_dir> <output_dir> <wnbase> '<lang1 lang2 lang3 ...>'")
         sys.exit(1)
 
     input_dir = sys.argv[1]
     output_dir = sys.argv[2]
-    languages = sys.argv[3].split()
+    wnbase = sys.argv[3]
+    languages = sys.argv[4].split()
 
     for lang in languages:
         print(f"Converting to tab: {lang}")
-        ara2wn(lang, input_dir, output_dir)
+        ara2wn(lang, wnbase, input_dir, output_dir)
