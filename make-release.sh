@@ -49,7 +49,7 @@ bash scripts/build-lmf.sh
 etc/omw-data/validate.sh
 
 
-BASEURL="https://github.com/omwn/arawn/releases/download/${TAG}"
+BASEURL="https://github.com/omwn/${WNBASE}/releases/download/${TAG}"
 export BASEURL
 
 bash etc/omw-data/package.sh $VERSION v$VERSION

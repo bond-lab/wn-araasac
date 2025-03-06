@@ -31,7 +31,7 @@ fi
 mkdir -p "${BLDDIR}"
 mkdir -p "${PREDIR}/log"
 
-URL='https://github.com/omwn/arawn'
+URL='https://github.com/omwn/${WNBASE}/'
 
 #Check for xsltproc Command
 
@@ -41,25 +41,25 @@ if ! command -v xsltproc &> /dev/null; then
 fi
 
 # Read languages from file safely
-while IFS='|' read -r arasaac bp47 en_name native_name; do
+while IFS='|' read -r local_code bp47 en_name native_name; do
     # Skip empty lines
-    if [[ -z "$arasaac" ]]; then
+    if [[ -z "$local_code" ]]; then
         continue
     fi
-    echo "Processing language: ${en_name} ($arasaac ${native_name})"
+    echo "Processing language: ${en_name} ($local_code ${native_name})"
     
-    INPUT_FILE="${PREDIR}/tab/${arasaac}-${WNBASE}.tab"
+    INPUT_FILE="${PREDIR}/tab/${local_code}-${WNBASE}.tab"
     
     # Check if file exists and has at least 10 lines
     if [ ! -f "$INPUT_FILE" ] || [ $(wc -l < "$INPUT_FILE") -lt 10 ]; then
-        echo "Skipping ${en_name} ($arasaac): File '$INPUT_FILE' has fewer than 10 lines."
+        echo "Skipping ${en_name} ($local_code): File '$INPUT_FILE' has fewer than 10 lines."
         continue
     fi
 
-    mkdir -p "${BLDDIR}/${WNBASE}-${arasaac}"
+    mkdir -p "${BLDDIR}/${WNBASE}-${local_code}"
     
     python "${OMWDATADIR}/scripts/tsv2lmf.py" \
-        --id "${WNBASE}-${arasaac}" \
+        --id "${WNBASE}-${local_code}" \
         --version "${VERSION}" \
         --label "Arasaac Wordnet for ${en_name} (${native_name})" \
         --language "${bp47}" \
@@ -68,13 +68,13 @@ while IFS='|' read -r arasaac bp47 en_name native_name; do
         --meta confidenceScore=1.0 \
         --url "${URL}" \
         --ili-map "${CILIDIR}/ili-map-pwn30.tab" \
-        --log "${PREDIR}/log/${WNBASE}-${arasaac}.log" \
+        --log "${PREDIR}/log/${WNBASE}-${local_code}.log" \
         "${INPUT_FILE}" \
-        "${BLDDIR}/${WNBASE}-${arasaac}/${WNBASE}-${arasaac}-tmp.xml"
+        "${BLDDIR}/${WNBASE}-${local_code}/${WNBASE}-${local_code}-tmp.xml"
 
     # Fix license and description
-    xsltproc scripts/update_license_description.xsl "${BLDDIR}/${WNBASE}-${arasaac}/${WNBASE}-${arasaac}-tmp.xml" \
-        > "${BLDDIR}/${WNBASE}-${arasaac}/${WNBASE}-${arasaac}.xml"
-    rm "${BLDDIR}/${WNBASE}-${arasaac}/${WNBASE}-${arasaac}-tmp.xml"
+    xsltproc scripts/update_license_description.xsl "${BLDDIR}/${WNBASE}-${local_code}/${WNBASE}-${local_code}-tmp.xml" \
+        > "${BLDDIR}/${WNBASE}-${local_code}/${WNBASE}-${local_code}.xml"
+    rm "${BLDDIR}/${WNBASE}-${local_code}/${WNBASE}-${local_code}-tmp.xml"
 
 done < "$LANGFILE"
